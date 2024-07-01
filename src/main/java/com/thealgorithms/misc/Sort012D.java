@@ -1,6 +1,6 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * The array is divided into four sections: a[1..Lo-1] zeroes a[Lo..Mid-1] ones
@@ -11,7 +11,9 @@ import java.util.*;
  * For more information on the Dutch national flag algorithm refer
  * https://en.wikipedia.org/wiki/Dutch_national_flag_problem
  */
-public class Sort012D {
+public final class Sort012D {
+    private Sort012D() {
+    }
 
     public static void main(String[] args) {
         Scanner np = new Scanner(System.in);
@@ -31,24 +33,26 @@ public class Sort012D {
         int temp;
         while (mid <= h) {
             switch (a[mid]) {
-            case 0: {
+            case 0:
                 temp = a[l];
                 a[l] = a[mid];
                 a[mid] = temp;
                 l++;
                 mid++;
                 break;
-            }
+
             case 1:
                 mid++;
                 break;
-            case 2: {
+            case 2:
                 temp = a[mid];
                 a[mid] = a[h];
                 a[h] = temp;
                 h--;
                 break;
-            }
+
+            default:
+                throw new IllegalArgumentException("Unexpected value: " + a[mid]);
             }
         }
         System.out.println("the Sorted array is ");

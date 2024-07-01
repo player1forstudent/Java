@@ -18,8 +18,6 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  *
  * Ex.2. [30,20,40,10,25,35,50] represents level order traversal of a binary
  * search tree. Find ceil for 52 Answer: -1
- */
-/**
  *
  * Solution 1: Brute Force Solution: Do an inorder traversal and save result
  * into an array. Iterate over the array to get an element equal to or greater
@@ -42,7 +40,9 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  * subtree. If left subtree returns a non-null value then that will be ceil
  * otherwise the root is ceil
  */
-public class CeilInBinarySearchTree {
+public final class CeilInBinarySearchTree {
+    private CeilInBinarySearchTree() {
+    }
 
     public static Node getCeil(Node root, int key) {
         if (root == null) {

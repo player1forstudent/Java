@@ -1,12 +1,13 @@
 package com.thealgorithms.others;
 
+import java.util.Scanner;
 /**
  * Given a matrix of size n x n We have to rotate this matrix by 90 Degree Here
  * is the algorithm for this problem .
  */
-import java.util.*;
-
-class Rotate_by_90_degree {
+final class RotateMatrixBy90Degrees {
+    private RotateMatrixBy90Degrees() {
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -41,7 +42,9 @@ class Rotate_by_90_degree {
 /**
  * Class containing the algo to roate matrix by 90 degree
  */
-class Rotate {
+final class Rotate {
+    private Rotate() {
+    }
 
     static void rotate(int[][] a) {
         int n = a.length;
@@ -54,7 +57,8 @@ class Rotate {
                 }
             }
         }
-        int i = 0, k = n - 1;
+        int i = 0;
+        int k = n - 1;
         while (i < k) {
             for (int j = 0; j < n; j++) {
                 int temp = a[i][j];

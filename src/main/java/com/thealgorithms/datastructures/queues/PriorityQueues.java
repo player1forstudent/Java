@@ -30,7 +30,7 @@ class PriorityQueue {
      * Default Constructor
      */
 
-    public PriorityQueue() {
+    PriorityQueue() {
         /* If capacity is not defined, default size of 11 would be used
          *  capacity=max+1 because we cant access 0th element of PQ, and to
          *  accomodate (max)th elements we need capacity to be max+1.
@@ -50,7 +50,7 @@ class PriorityQueue {
      * @param size Size of the queue
      */
 
-    public PriorityQueue(int size) {
+    PriorityQueue(int size) {
         maxSize = size + 1;
         queueArray = new int[maxSize];
         nItems = 0;
@@ -87,9 +87,13 @@ class PriorityQueue {
         while (2 * pos <= nItems) {
             int current = 2 * pos; // Jump to the positon of child node
             // Compare both the children for the greater one
-            if (current < nItems && queueArray[current] < queueArray[current + 1]) current++;
+            if (current < nItems && queueArray[current] < queueArray[current + 1]) {
+                current++;
+            }
             // If the parent node is greater, sink operation is complete. Break the loop
-            if (queueArray[pos] >= queueArray[current]) break;
+            if (queueArray[pos] >= queueArray[current]) {
+                break;
+            }
 
             // If not exchange the value of parent with child
             int temp = queueArray[pos];

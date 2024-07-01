@@ -1,5 +1,7 @@
 package com.thealgorithms.others;
 
+import java.util.Scanner;
+
 /**
  * This file contains an implementation of BANKER'S ALGORITM Wikipedia:
  * https://en.wikipedia.org/wiki/Banker%27s_algorithm
@@ -18,9 +20,9 @@ package com.thealgorithms.others;
  *
  * @author AMRITESH ANAND (https://github.com/amritesh19)
  */
-import java.util.Scanner;
-
-public class BankersAlgorithm {
+public final class BankersAlgorithm {
+    private BankersAlgorithm() {
+    }
 
     /**
      * This method finds the need of each process
@@ -58,10 +60,7 @@ public class BankersAlgorithm {
         int[] safeSequenceArray = new int[totalProcess];
 
         int[] workArray = new int[totalResources];
-
-        for (int i = 0; i < totalResources; i++) {
-            workArray[i] = availableArray[i];
-        }
+        System.arraycopy(availableArray, 0, workArray, 0, totalResources);
 
         int count = 0;
 
@@ -111,7 +110,8 @@ public class BankersAlgorithm {
      * This is main method of Banker's Algorithm
      */
     public static void main(String[] args) {
-        int numberOfProcesses, numberOfResources;
+        int numberOfProcesses;
+        int numberOfResources;
 
         Scanner sc = new Scanner(System.in);
 

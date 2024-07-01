@@ -16,7 +16,9 @@ import java.util.Stack;
  *
  */
 
-public class PostfixToInfix {
+public final class PostfixToInfix {
+    private PostfixToInfix() {
+    }
 
     public static boolean isOperator(char token) {
         switch (token) {
@@ -26,18 +28,24 @@ public class PostfixToInfix {
         case '*':
         case '^':
             return true;
+        default:
+            return false;
         }
-
-        return false;
     }
 
     public static boolean isValidPostfixExpression(String postfix) {
         /* Postfix expression length should NOT be less than 3 */
-        if (postfix.length() < 3) return false;
+        if (postfix.length() < 3) {
+            return false;
+        }
 
         /* First two characters should NOT be operators */
-        if (isOperator(postfix.charAt(0))) return false;
-        if (isOperator(postfix.charAt(1))) return false;
+        if (isOperator(postfix.charAt(0))) {
+            return false;
+        }
+        if (isOperator(postfix.charAt(1))) {
+            return false;
+        }
 
         int operandCount = 0;
         int operatorCount = 0;
@@ -49,14 +57,18 @@ public class PostfixToInfix {
 
             if (isOperator(token)) {
                 operatorCount++;
-                if (operatorCount >= operandCount) return false;
+                if (operatorCount >= operandCount) {
+                    return false;
+                }
             } else {
                 if (operatorCount == 0) {
                     operandCount++;
                     continue;
                 }
 
-                if (operandCount != operatorCount + 1) return false;
+                if (operandCount != operatorCount + 1) {
+                    return false;
+                }
 
                 /* Operand count is set to 2 because:-
                  *
@@ -78,7 +90,9 @@ public class PostfixToInfix {
     public static String getPostfixToInfix(String postfix) {
         String infix = "";
 
-        if (postfix.isEmpty()) return infix;
+        if (postfix.isEmpty()) {
+            return infix;
+        }
 
         /* Validate Postfix expression before proceeding with the Infix conversion */
         if (!isValidPostfixExpression(postfix)) {
@@ -88,7 +102,8 @@ public class PostfixToInfix {
         Stack<String> stack = new Stack<>();
         StringBuilder valueString = new StringBuilder();
 
-        String operandA, operandB;
+        String operandA;
+        String operandB;
         char operator;
 
         for (int index = 0; index < postfix.length(); index++) {

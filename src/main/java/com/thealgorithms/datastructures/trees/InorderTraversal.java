@@ -25,7 +25,9 @@ import java.util.List;
  *
  * @author Albina Gimaletdinova on 21/02/2023
  */
-public class InorderTraversal {
+public final class InorderTraversal {
+    private InorderTraversal() {
+    }
     public static List<Integer> recursiveInorder(BinaryTree.Node root) {
         List<Integer> result = new ArrayList<>();
         recursiveInorder(root, result);
@@ -34,7 +36,9 @@ public class InorderTraversal {
 
     public static List<Integer> iterativeInorder(BinaryTree.Node root) {
         List<Integer> result = new ArrayList<>();
-        if (root == null) return result;
+        if (root == null) {
+            return result;
+        }
 
         Deque<BinaryTree.Node> stack = new ArrayDeque<>();
         while (!stack.isEmpty() || root != null) {

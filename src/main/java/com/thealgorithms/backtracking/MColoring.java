@@ -1,6 +1,10 @@
 package com.thealgorithms.backtracking;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
 
 /**
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
@@ -10,7 +14,9 @@ class Node {
     Set<Integer> edges = new HashSet<Integer>();
 }
 
-public class MColoring {
+public final class MColoring {
+    private MColoring() {
+    }
     static int possiblePaint(ArrayList<Node> nodes, int n, int m) {
 
         // Create a visited array of n nodes
@@ -53,7 +59,9 @@ public class MColoring {
                     // If number of colors used exceeds m,
                     // return 0
                     maxColors = Math.max(maxColors, Math.max(nodes.get(top).color, nodes.get(it).color));
-                    if (maxColors > m) return 0;
+                    if (maxColors > m) {
+                        return 0;
+                    }
 
                     // If the adjacent node is not visited,
                     // mark it visited and push it in queue

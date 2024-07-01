@@ -9,7 +9,9 @@ import java.util.stream.IntStream;
  * are not equal to 15) are 1, 3 and 5, so the aliquot sum of 15 is 9 i.e. (1 +
  * 3 + 5). Wikipedia: https://en.wikipedia.org/wiki/Aliquot_sum
  */
-public class AliquotSum {
+public final class AliquotSum {
+    private AliquotSum() {
+    }
 
     /**
      * Finds the aliquot sum of an integer number.
@@ -32,7 +34,9 @@ public class AliquotSum {
      * @return aliquot sum of given {@code number}
      */
     public static int getAliquotSum(int n) {
-        if (n <= 0) return -1;
+        if (n <= 0) {
+            return -1;
+        }
         int sum = 1;
         double root = Math.sqrt(n);
         /*
@@ -51,7 +55,9 @@ public class AliquotSum {
         }
         // if n is a perfect square then its root was added twice in above loop, so subtracting root
         // from sum
-        if (root == (int) root) sum -= root;
+        if (root == (int) root) {
+            sum -= root;
+        }
         return sum;
     }
 }

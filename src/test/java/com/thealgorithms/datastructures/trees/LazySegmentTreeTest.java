@@ -1,6 +1,6 @@
 package com.thealgorithms.datastructures.trees;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -49,12 +49,13 @@ public class LazySegmentTreeTest {
         int[] arr = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         LazySegmentTree lazySegmentTree = new LazySegmentTree(arr);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++) {
             for (int j = i + 1; j < 10; j++) {
                 lazySegmentTree.updateRange(i, j, 1);
                 assertEquals(j - i, lazySegmentTree.getRange(i, j));
                 lazySegmentTree.updateRange(i, j, -1);
                 assertEquals(0, lazySegmentTree.getRange(i, j));
             }
+        }
     }
 }

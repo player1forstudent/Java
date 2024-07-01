@@ -6,8 +6,7 @@ public final class RabinKarpAlgorithm {
     private RabinKarpAlgorithm() {
     }
 
-    // d is the number of characters in the input alphabet
-    private static final int d = 256;
+    private static final int ALPHABET_SIZE = 256;
 
     public static int search(String pattern, String text, int primeNumber) {
 
@@ -19,13 +18,15 @@ public final class RabinKarpAlgorithm {
         int h = 1;
 
         // The value of h would be "pow(d, patternLength-1)%primeNumber"
-        for (int i = 0; i < patternLength - 1; i++) h = (h * d) % primeNumber;
+        for (int i = 0; i < patternLength - 1; i++) {
+            h = (h * ALPHABET_SIZE) % primeNumber;
+        }
 
         // Calculate the hash value of pattern and first
         // window of text
         for (int i = 0; i < patternLength; i++) {
-            hashForPattern = (d * hashForPattern + pattern.charAt(i)) % primeNumber;
-            hashForText = (d * hashForText + text.charAt(i)) % primeNumber;
+            hashForPattern = (ALPHABET_SIZE * hashForPattern + pattern.charAt(i)) % primeNumber;
+            hashForText = (ALPHABET_SIZE * hashForText + text.charAt(i)) % primeNumber;
         }
 
         // Slide the pattern over text one by one
@@ -38,7 +39,9 @@ public final class RabinKarpAlgorithm {
             if (hashForPattern == hashForText) {
                 /* Check for characters one by one */
                 for (j = 0; j < patternLength; j++) {
-                    if (text.charAt(i + j) != pattern.charAt(j)) break;
+                    if (text.charAt(i + j) != pattern.charAt(j)) {
+                        break;
+                    }
                 }
 
                 // if hashForPattern == hashForText and pattern[0...patternLength-1] = text[i, i+1, ...i+patternLength-1]
@@ -51,10 +54,12 @@ public final class RabinKarpAlgorithm {
             // Calculate hash value for next window of text: Remove
             // leading digit, add trailing digit
             if (i < textLength - patternLength) {
-                hashForText = (d * (hashForText - text.charAt(i) * h) + text.charAt(i + patternLength)) % primeNumber;
+                hashForText = (ALPHABET_SIZE * (hashForText - text.charAt(i) * h) + text.charAt(i + patternLength)) % primeNumber;
 
                 // handling negative hashForText
-                if (hashForText < 0) hashForText = (hashForText + primeNumber);
+                if (hashForText < 0) {
+                    hashForText = (hashForText + primeNumber);
+                }
             }
         }
         return index; // return -1 if pattern does not found

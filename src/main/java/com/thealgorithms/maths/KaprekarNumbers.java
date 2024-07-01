@@ -1,9 +1,12 @@
 package com.thealgorithms.maths;
 
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class KaprekarNumbers {
+public final class KaprekarNumbers {
+    private KaprekarNumbers() {
+    }
 
     /* This program demonstrates if a given number is Kaprekar Number or not.
         Kaprekar Number: A Kaprekar number is an n-digit number which its square can be split into
@@ -13,11 +16,15 @@ public class KaprekarNumbers {
     // Provides a list of kaprekarNumber in a range
     public static List<Long> kaprekarNumberInRange(long start, long end) throws Exception {
         long n = end - start;
-        if (n < 0) throw new Exception("Invalid range");
+        if (n < 0) {
+            throw new Exception("Invalid range");
+        }
         ArrayList<Long> list = new ArrayList<>();
 
         for (long i = start; i <= end; i++) {
-            if (isKaprekarNumber(i)) list.add(i);
+            if (isKaprekarNumber(i)) {
+                list.add(i);
+            }
         }
 
         return list;

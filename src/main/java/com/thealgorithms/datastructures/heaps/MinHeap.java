@@ -22,7 +22,7 @@ public class MinHeap implements Heap {
                 System.out.println("Null element. Not added to heap");
             }
         }
-        if (minHeap.size() == 0) {
+        if (minHeap.isEmpty()) {
             System.out.println("No element has been added, empty heap.");
         }
     }
@@ -85,18 +85,20 @@ public class MinHeap implements Heap {
     }
 
     @Override
-    public void insertElement(HeapElement element) {
+    public final void insertElement(HeapElement element) {
         minHeap.add(element);
         toggleUp(minHeap.size());
     }
 
     @Override
     public void deleteElement(int elementIndex) {
-        if (minHeap.isEmpty()) try {
+        if (minHeap.isEmpty()) {
+            try {
                 throw new EmptyHeapException("Attempt to delete an element from an empty heap");
             } catch (EmptyHeapException e) {
                 e.printStackTrace();
             }
+        }
         if ((elementIndex > minHeap.size()) || (elementIndex <= 0)) {
             throw new IndexOutOfBoundsException("Index out of heap range");
         }
@@ -117,7 +119,7 @@ public class MinHeap implements Heap {
         try {
             return extractMin();
         } catch (Exception e) {
-            throw new EmptyHeapException("Heap is empty. Error retrieving element");
+            throw new EmptyHeapException("Heap is empty. Error retrieving element", e);
         }
     }
 }

@@ -8,7 +8,9 @@ References: https://en.wikipedia.org/wiki/Streaming_algorithm
 * items from the end of the window are removed from consideration while new items from the stream take their place.
 * @author Swarga-codes (https://github.com/Swarga-codes)
 */
-public class MaximumSumOfDistinctSubarraysWithLengthK {
+public final class MaximumSumOfDistinctSubarraysWithLengthK {
+    private MaximumSumOfDistinctSubarraysWithLengthK() {
+    }
     /*
      * Returns the maximum sum of subarray of size K consisting of distinct
      * elements.
@@ -22,7 +24,9 @@ public class MaximumSumOfDistinctSubarraysWithLengthK {
      * @return the maximum sum of distinct subarray of size K.
      */
     public static long maximumSubarraySum(int k, int... nums) {
-        if (nums.length < k) return 0;
+        if (nums.length < k) {
+            return 0;
+        }
         long max = 0; // this will store the max sum which will be our result
         long s = 0; // this will store the sum of every k elements which can be used to compare with
                     // max

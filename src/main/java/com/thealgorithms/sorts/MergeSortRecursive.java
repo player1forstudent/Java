@@ -1,7 +1,6 @@
 package com.thealgorithms.sorts;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MergeSortRecursive {
@@ -35,13 +34,13 @@ public class MergeSortRecursive {
     }
 
     private static List<Integer> sort(List<Integer> unsortedA, List<Integer> unsortedB) {
-        if (unsortedA.size() <= 0 && unsortedB.size() <= 0) {
+        if (unsortedA.isEmpty() && unsortedB.isEmpty()) {
             return new ArrayList<>();
         }
-        if (unsortedA.size() <= 0) {
+        if (unsortedA.isEmpty()) {
             return unsortedB;
         }
-        if (unsortedB.size() <= 0) {
+        if (unsortedB.isEmpty()) {
             return unsortedA;
         }
         if (unsortedA.get(0) <= unsortedB.get(0)) {
@@ -57,13 +56,5 @@ public class MergeSortRecursive {
             newAl.addAll(sort(unsortedA, unsortedB.subList(1, unsortedB.size())));
             return newAl;
         }
-    }
-}
-
-class App {
-
-    public static void main(String[] args) {
-        MergeSortRecursive sort = new MergeSortRecursive(new ArrayList<>(Arrays.asList(4, 3, 1, 8, 5, 10, 0, 1, 4, 11, 8, 9)));
-        sort.mergeSort();
     }
 }

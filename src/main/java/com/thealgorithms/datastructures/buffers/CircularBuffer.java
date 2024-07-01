@@ -24,7 +24,9 @@ public class CircularBuffer<Item> {
     }
 
     public Item get() {
-        if (isEmpty()) return null;
+        if (isEmpty()) {
+            return null;
+        }
 
         Item item = buffer[getPointer.getAndIncrement()];
         size.decrementAndGet();
@@ -32,7 +34,9 @@ public class CircularBuffer<Item> {
     }
 
     public boolean put(Item item) {
-        if (isFull()) return false;
+        if (isFull()) {
+            return false;
+        }
 
         buffer[putPointer.getAndIncrement()] = item;
         size.incrementAndGet();
@@ -43,13 +47,15 @@ public class CircularBuffer<Item> {
         private int pointer;
         private final int max;
 
-        public CircularPointer(int pointer, int max) {
+        CircularPointer(int pointer, int max) {
             this.pointer = pointer;
             this.max = max;
         }
 
         public int getAndIncrement() {
-            if (pointer == max) pointer = 0;
+            if (pointer == max) {
+                pointer = 0;
+            }
             int tmp = pointer;
             pointer++;
             return tmp;

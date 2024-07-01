@@ -1,14 +1,14 @@
 package com.thealgorithms.datastructures.lists;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import org.junit.jupiter.api.Test;
+
 /**
  * Test cases for RotateSinglyLinkedLists
  * Author: Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-
 public class RotateSinglyLinkedListsTest {
 
     @Test

@@ -4,7 +4,7 @@
 // Explanation:- https://www.tutorialspoint.com/java-program-for-binary-search-recursive
 package com.thealgorithms.searches;
 
-import java.util.*;
+import java.util.Scanner;
 
 // Create a SearchAlgorithm class with a generic type
 abstract class SearchAlgorithm<T extends Comparable<T>> {
@@ -67,10 +67,11 @@ public class RecursiveBinarySearch<T extends Comparable<T>> extends SearchAlgori
             RecursiveBinarySearch<Integer> searcher = new RecursiveBinarySearch<>();
             int res = searcher.find(a, t);
 
-            if (res == -1)
+            if (res == -1) {
                 System.out.println("Element not found in the array.");
-            else
+            } else {
                 System.out.println("Element found at index " + res);
+            }
         }
     }
 }

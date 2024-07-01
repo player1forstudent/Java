@@ -1,8 +1,6 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
-import java.util.*;
+import java.util.ArrayList;
 
 public class PigeonholeSort {
 
@@ -14,7 +12,9 @@ public class PigeonholeSort {
     void sort(Integer[] array) {
         int maxElement = array[0];
         for (int element : array) {
-            if (element > maxElement) maxElement = element;
+            if (element > maxElement) {
+                maxElement = element;
+            }
         }
 
         int numOfPigeonholes = 1 + maxElement;
@@ -42,7 +42,7 @@ public class PigeonholeSort {
         Integer[] arr = {8, 3, 2, 7, 4, 6, 8};
 
         System.out.print("Unsorted order is : ");
-        print(arr);
+        SortUtils.print(arr);
 
         pigeonholeSort.sort(arr);
 
@@ -50,6 +50,6 @@ public class PigeonholeSort {
         for (int i = 0; i < arr.length; i++) {
             assert (arr[i]) <= (arr[i + 1]);
         }
-        print(arr);
+        SortUtils.print(arr);
     }
 }

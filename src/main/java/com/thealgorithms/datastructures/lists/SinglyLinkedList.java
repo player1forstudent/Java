@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.StringJoiner;
 
 /**
- * https://en.wikipedia.org/wiki/Linked_list
+ * <a href="https://en.wikipedia.org/wiki/Linked_list">wikipedia</a>
  */
 public class SinglyLinkedList implements Iterable<Integer> {
 
@@ -82,18 +82,20 @@ public class SinglyLinkedList implements Iterable<Integer> {
         if (valueFirst == valueSecond) {
             return;
         }
-        Node previousA = null, currentA = head;
+        Node previousA = null;
+        Node currentA = head;
         while (currentA != null && currentA.value != valueFirst) {
             previousA = currentA;
             currentA = currentA.next;
         }
 
-        Node previousB = null, currentB = head;
+        Node previousB = null;
+        Node currentB = head;
         while (currentB != null && currentB.value != valueSecond) {
             previousB = currentB;
             currentB = currentB.next;
         }
-        /** If either of 'a' or 'b' is not present, then return */
+        /* If either of 'a' or 'b' is not present, then return */
         if (currentA == null || currentB == null) {
             return;
         }
@@ -331,11 +333,6 @@ public class SinglyLinkedList implements Iterable<Integer> {
         cur.next = newNode;
         size++;
     }
-
-    /**
-     * Swaps nodes of two given values a and b.
-     *
-     */
 
     /**
      * Deletes a node at the head

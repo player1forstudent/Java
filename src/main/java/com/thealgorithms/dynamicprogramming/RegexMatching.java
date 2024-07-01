@@ -6,13 +6,13 @@ package com.thealgorithms.dynamicprogramming;
  * cover the entire text ?-> matches single characters *-> match the sequence of
  * characters
  *
- */
-/**
  * For calculation of Time and Space Complexity. Let N be length of src and M be
  * length of pat
  *
  */
-public class RegexMatching {
+public final class RegexMatching {
+    private RegexMatching() {
+    }
 
     // Method 1: Using Recursion
     // Time Complexity=0(2^(N+M)) Space Complexity=Recursion Extra Space

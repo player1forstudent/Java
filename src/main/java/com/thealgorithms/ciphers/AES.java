@@ -7,7 +7,9 @@ import java.util.Scanner;
  * This class is build to demonstrate the application of the AES-algorithm on a
  * single 128-Bit block of data.
  */
-public class AES {
+public final class AES {
+    private AES() {
+    }
 
     /**
      * Precalculated values for x to the power of 2 in Rijndaels galois field.
@@ -2754,8 +2756,8 @@ public class AES {
                     in = input.nextLine();
                     BigInteger encryptionKey = new BigInteger(in, 16);
                     System.out.println(
-                        "The encrypted message is: \n" +
-                        encrypt(plaintext, encryptionKey).toString(16)
+                        "The encrypted message is: \n"
+                        + encrypt(plaintext, encryptionKey).toString(16)
                     );
                 }
                 case 'D', 'd' -> {
@@ -2770,8 +2772,8 @@ public class AES {
                     in = input.nextLine();
                     BigInteger decryptionKey = new BigInteger(in, 16);
                     System.out.println(
-                        "The deciphered message is:\n" +
-                        decrypt(ciphertext, decryptionKey).toString(16)
+                        "The deciphered message is:\n"
+                        + decrypt(ciphertext, decryptionKey).toString(16)
                     );
                 }
                 default -> System.out.println("** End **");

@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -58,7 +59,7 @@ class MeansTest {
 
     @Test
     void geometricMeanMultipleNumbers() {
-        LinkedList<Double> numbers = new LinkedList<>() {};
+        LinkedList<Double> numbers = new LinkedList<>();
         numbers.addAll(Lists.newArrayList(1d, 2d, 3d, 4d, 5d, 6d, 1.25));
         assertEquals(2.6426195539300585, Means.geometric(numbers));
     }

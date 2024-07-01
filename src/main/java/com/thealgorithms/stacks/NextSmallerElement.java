@@ -37,7 +37,9 @@ import java.util.Stack;
    answer is -1
  */
 
-public class NextSmallerElement {
+public final class NextSmallerElement {
+    private NextSmallerElement() {
+    }
 
     public static int[] findNextSmallerElements(int[] array) {
         // base case
@@ -49,7 +51,9 @@ public class NextSmallerElement {
         Arrays.fill(result, -1);
 
         for (int i = 0; i < array.length; i++) {
-            while (!stack.empty() && stack.peek() >= array[i]) stack.pop();
+            while (!stack.empty() && stack.peek() >= array[i]) {
+                stack.pop();
+            }
             if (stack.empty()) {
                 result[i] = -1;
             } else {

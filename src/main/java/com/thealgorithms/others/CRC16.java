@@ -3,7 +3,9 @@ package com.thealgorithms.others;
 /**
  * Generates a crc16 checksum for a given string
  */
-public class CRC16 {
+public final class CRC16 {
+    private CRC16() {
+    }
 
     public static void main(String[] args) {
         System.out.println(crc16("Hello World!"));
@@ -19,7 +21,9 @@ public class CRC16 {
                 boolean bit = ((b >> (7 - i) & 1) == 1);
                 boolean c15 = ((crc >> 15 & 1) == 1);
                 crc <<= 1;
-                if (c15 ^ bit) crc ^= polynomial;
+                if (c15 ^ bit) {
+                    crc ^= polynomial;
+                }
             }
         }
         crc &= 0xffff;

@@ -1,11 +1,18 @@
 package com.thealgorithms.datastructures.buffers;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicIntegerArray;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -33,21 +40,29 @@ class CircularBufferTest {
         buffer.put(generateInt());
         assertFalse(buffer.isFull());
 
-        for (int i = 1; i < BUFFER_SIZE; i++) buffer.put(generateInt());
+        for (int i = 1; i < BUFFER_SIZE; i++) {
+            buffer.put(generateInt());
+        }
         assertTrue(buffer.isFull());
     }
 
     @Test
     void get() {
         assertNull(buffer.get());
-        for (int i = 0; i < 100; i++) buffer.put(i);
-        for (int i = 0; i < BUFFER_SIZE; i++) assertEquals(i, buffer.get());
+        for (int i = 0; i < 100; i++) {
+            buffer.put(i);
+        }
+        for (int i = 0; i < BUFFER_SIZE; i++) {
+            assertEquals(i, buffer.get());
+        }
         assertNull(buffer.get());
     }
 
     @Test
     void put() {
-        for (int i = 0; i < BUFFER_SIZE; i++) assertTrue(buffer.put(generateInt()));
+        for (int i = 0; i < BUFFER_SIZE; i++) {
+            assertTrue(buffer.put(generateInt()));
+        }
         assertFalse(buffer.put(generateInt()));
     }
 
@@ -67,7 +82,9 @@ class CircularBufferTest {
             while (producerCountDownLatch.getCount() > 0) {
                 int count = (int) producerCountDownLatch.getCount();
                 boolean put = buffer.put(count);
-                while (!put) put = buffer.put(count);
+                while (!put) {
+                    put = buffer.put(count);
+                }
                 producerCountDownLatch.countDown();
             }
         });
@@ -78,7 +95,9 @@ class CircularBufferTest {
             while (consumerCountDownLatch.getCount() > 0) {
                 int count = (int) consumerCountDownLatch.getCount();
                 Integer item = buffer.get();
-                while (item == null) item = buffer.get();
+                while (item == null) {
+                    item = buffer.get();
+                }
                 resultAtomicArray.set(count - 1, item);
                 consumerCountDownLatch.countDown();
             }
@@ -104,7 +123,9 @@ class CircularBufferTest {
 
     private void shutDownExecutorSafely(ExecutorService executorService) {
         try {
-            if (!executorService.awaitTermination(1_000, TimeUnit.MILLISECONDS)) executorService.shutdownNow();
+            if (!executorService.awaitTermination(1_000, TimeUnit.MILLISECONDS)) {
+                executorService.shutdownNow();
+            }
         } catch (InterruptedException e) {
             executorService.shutdownNow();
         }
@@ -113,7 +134,9 @@ class CircularBufferTest {
     public List<Integer> getSortedListFrom(AtomicIntegerArray atomicArray) {
         int length = atomicArray.length();
         ArrayList<Integer> result = new ArrayList<>(length);
-        for (int i = 0; i < length; i++) result.add(atomicArray.get(i));
+        for (int i = 0; i < length; i++) {
+            result.add(atomicArray.get(i));
+        }
         result.sort(Comparator.comparingInt(o -> o));
         return result;
     }

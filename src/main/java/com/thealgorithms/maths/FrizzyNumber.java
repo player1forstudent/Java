@@ -1,13 +1,12 @@
-/**
- * Author : Siddhant Swarup Mallick
- * Github : https://github.com/siddhant2002
- */
-
-/** Program description - To find the FrizzyNumber*/
-
 package com.thealgorithms.maths;
 
-public class FrizzyNumber {
+/**
+ * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
+ * Program description - To find the FrizzyNumber
+ */
+public final class FrizzyNumber {
+    private FrizzyNumber() {
+    }
 
     /**
      * Returns the n-th number that is a sum of powers
